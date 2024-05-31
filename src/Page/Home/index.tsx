@@ -1,4 +1,4 @@
-import List from "../../Components/Home/Job/List";
+import List from "../../Components/Home/job/List";
 import { useFetchGetJobs } from "../../hooks/job/use-http";
 
 interface PageProps {}

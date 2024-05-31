@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useFetchCompanyById } from "../../hooks/company/use-http";
-import Detail from "../../Components/Company/Detail";
+import Detail from "../../Components/company/Detail";
 
 const Page = () => {
   const { id }: any = useParams();

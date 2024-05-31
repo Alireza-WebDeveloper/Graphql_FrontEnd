@@ -4,12 +4,12 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Home from "./Page/Home";
-import Comapny from "./Page/Comapny";
-import CreateJob from "./Page/CreateJob";
-import Job from "./Page/Job";
-import Login from "./Page/Login";
-import Layout from "./Page/Layout";
+import Home from "./Page/home";
+import Comapny from "./Page/company";
+import CreateJob from "./Page/create-job";
+import Job from "./Page/job";
+import Login from "./Page/login";
+import Layout from "./Page/layout";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
