@@ -13,5 +13,5 @@ export type JobState = {
 };
 
 export type JobResponse = {
-  job: JobState[];
+  jobs: JobState[];
 };

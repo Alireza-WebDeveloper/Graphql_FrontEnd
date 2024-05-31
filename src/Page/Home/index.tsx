@@ -1,10 +1,10 @@
 import List from "../../Components/Home/Job/List";
-import useFetchJob from "../../hooks/job/use-http";
+import { useFetchGetJobs } from "../../hooks/job/use-http";
 
 interface PageProps {}
 
 const Page: React.FC<PageProps> = () => {
-  const { jobs, loading, error } = useFetchJob();
+  const { jobs, loading, error } = useFetchGetJobs();
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error ...</div>;
