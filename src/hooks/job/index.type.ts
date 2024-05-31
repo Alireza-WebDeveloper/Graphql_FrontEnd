@@ -1,4 +1,4 @@
-type Company = {
+export type CompanyState = {
   description: string;
   id: string;
   name: string;
@@ -9,7 +9,7 @@ export type JobState = {
   description: string;
   id: string;
   title: string;
-  company: Company;
+  company: CompanyState;
 };
 
 export type JobResponse = {

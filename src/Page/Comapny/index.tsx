@@ -1,5 +1,12 @@
+import { useParams } from "react-router-dom";
+import { useFetchCompanyById } from "../../hooks/company/use-http";
+import Detail from "../../Components/Company/Detail";
+
 const Page = () => {
-  return <div className="text-center">company page</div>;
+  const { id }: any = useParams();
+  const { company } = useFetchCompanyById({ id });
+
+  return <div>{company && <Detail company={company} />}</div>;
 };
 
 export default Page;
