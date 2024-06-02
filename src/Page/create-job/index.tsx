@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { FormState } from "../../Components/create-job/index.type";
 import Form from "../../Components/create-job/form";
+import { useCreateJob } from "../../hooks/job/use-http";
 
 const Page = () => {
   const [form, setForm] = useState({
@@ -13,10 +14,14 @@ const Page = () => {
     setForm({ ...form, [key]: value });
   };
 
+  const { mutate, loading, error, data } = useCreateJob();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(form);
+    const { title, description } = form;
+    mutate(title, description);
   };
+  console.log(data.createJob);
 
   return (
     <div className="text-center">

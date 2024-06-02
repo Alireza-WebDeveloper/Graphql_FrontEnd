@@ -82,4 +82,37 @@ const useFetchGetJobById = ({ id }: { id: string | null }) => {
   return { job, loading, error };
 };
 
-export { useFetchGetJobs, useFetchGetJobById };
+const useCreateJob = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState();
+  const mutate = async (title: string, description: string) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const mutation = gql`
+        mutation Mutation($title: String!, $description: String!) {
+          createJob(title: $title, description: $description) {
+            title
+            description
+          }
+        }
+      `;
+
+      const response = await graphqlClientHome.request(mutation, {
+        title,
+        description,
+      });
+      setData(response);
+    } catch (error) {
+      setError(error); // Set error state if mutation fails
+    } finally {
+      setLoading(false); // Set loading state to false after mutation (always)
+    }
+  };
+
+  return { mutate, loading, error, data };
+};
+
+export { useFetchGetJobs, useFetchGetJobById, useCreateJob };
