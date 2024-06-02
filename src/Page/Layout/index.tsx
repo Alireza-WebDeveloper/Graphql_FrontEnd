@@ -12,7 +12,8 @@ const Layout = () => {
         <div className="flex gap-10 flex-wrap">
           <CustomLink to="/">home</CustomLink>
           <CustomLink to="/jobs/new">job</CustomLink>
-          <CustomLink to="/login">login</CustomLink>
+          <CustomLink to="/login">login</CustomLink>{" "}
+          <CustomLink to="/product">product</CustomLink>
         </div>
         <ToggleTheme />
       </Header>

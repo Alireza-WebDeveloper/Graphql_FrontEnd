@@ -10,6 +10,7 @@ import CreateJob from "./Page/create-job";
 import Job from "./Page/job";
 import Login from "./Page/login";
 import Layout from "./Page/layout";
+import Product from "./Page/product";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -18,7 +19,8 @@ const router = createBrowserRouter(
         <Route path="/login" element={<Login />} />
         <Route path="/companies/:id" element={<Comapny />} />
         <Route path="/jobs/job/:id" element={<Job />} />
-        <Route path="/jobs/new" element={<CreateJob />} />
+        <Route path="/jobs/new" element={<CreateJob />} />{" "}
+        <Route path="/product" element={<Product />} />
       </Route>
     </>
   )
