@@ -2,10 +2,11 @@ import React from "react";
 import { FormState } from "./index.type";
 import TextField from "../Common/Main/form/text-field";
 import ButtonContainer from "../Common/Main/button-container";
+import TextArea from "../Common/Main/text-area";
 
 interface FormProps {
   form: FormState;
-  handleSubmit(e: ReactForm): void;
+  handleSubmit(e: React.FormEvent): void;
   handleUpdateForm(key: keyof FormState, value: string): void;
 }
 const Form: React.FC<FormProps> = ({
@@ -14,20 +15,21 @@ const Form: React.FC<FormProps> = ({
   handleSubmit,
 }) => {
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="text-center flex flex-col space-y-4"
+    >
       <TextField
-        name="email"
-        type="email"
-        label="email"
-        value={form.email}
-        onChange={(e) => handleUpdateForm("email", e.target.value)}
+        name="title"
+        type="text"
+        label="title"
+        value={form.title}
+        onChange={(e) => handleUpdateForm("title", e.target.value)}
       />
-      <TextField
-        name="password"
-        type="password"
-        label="password"
-        value={form.password}
-        onChange={(e) => handleUpdateForm("password", e.target.value)}
+      <TextArea
+        label="descriotion"
+        value={form.description}
+        setValue={(value: any) => handleUpdateForm("description", value)}
       />
       <ButtonContainer color="blue" fontSize="large" type="submit">
         submit
