@@ -1,5 +1,5 @@
 import React from "react";
-import useFetchBlogs from "../../hooks/blog/use-http";
+import { useFetchBlogs } from "../../hooks/blog/use-http";
 import List from "../../Components/blog/list";
 import CustomLink from "../../Components/Common/Main/CustomLink";
 import ButtonContainer from "../../Components/Common/Main/button-container";
