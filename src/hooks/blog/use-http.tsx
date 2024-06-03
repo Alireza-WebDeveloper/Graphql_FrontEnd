@@ -83,4 +83,46 @@ const useCreateBlog = () => {
 
   return { mutate, loading, error, data };
 };
-export { useFetchBlogs, useCreateBlog };
+
+const useDeleteBlog = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  const remove = async (id: string) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const mutation = gql`
+        mutation DeleteBlog($id: ID!) {
+          deleteBlog(id: $id) {
+            status
+          }
+        }
+      `;
+
+      const variables = { id };
+
+      const response = await graphqlClient.request<{
+        deleteBlog: { status: number };
+      }>(mutation, variables);
+
+      if (response.deleteBlog.status !== 200) {
+        throw new Error("Failed to delete the blog post.");
+      }
+
+      // Redirect to the blog page after deleting the blog post
+      navigate("/blog");
+    } catch (err: any) {
+      setError(
+        err.message || "An error occurred while deleting the blog post."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { remove, loading, error };
+};
+export { useFetchBlogs, useCreateBlog, useDeleteBlog };
