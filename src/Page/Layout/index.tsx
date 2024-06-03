@@ -13,7 +13,8 @@ const Layout = () => {
           <CustomLink to="/">home</CustomLink>
           <CustomLink to="/jobs/new">job</CustomLink>
           <CustomLink to="/login">login</CustomLink>{" "}
-          <CustomLink to="/product">product</CustomLink>
+          <CustomLink to="/product">product</CustomLink>{" "}
+          <CustomLink to="/blog">blog</CustomLink>
         </div>
         <ToggleTheme />
       </Header>

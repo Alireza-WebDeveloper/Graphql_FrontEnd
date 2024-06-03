@@ -1,5 +1,5 @@
 export type ProductState = {
   price: string;
-  id: string;
+  _id: string;
   name: string;
 };
