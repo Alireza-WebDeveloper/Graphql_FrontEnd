@@ -1,9 +1,12 @@
+// !! Package
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
+
+// !! Package
 import Home from "./Page/home";
 import Comapny from "./Page/company";
 import CreateJob from "./Page/create-job";
@@ -13,10 +16,23 @@ import Layout from "./Page/layout";
 import Product from "./Page/product";
 import Blog from "./Page/blog";
 import BlogCreate from "./Page/blog/create";
+import Dashboard from "./Page/dashboard/index";
+
+// !! Middleware
+import Middleware from "./Components/Common/Config/middleware";
+
+// !! Route
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<Layout />}>
+      <Route
+        path="/"
+        element={
+          <Middleware>
+            <Layout />
+          </Middleware>
+        }
+      >
         <Route index element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/companies/:id" element={<Comapny />} />
@@ -25,6 +41,7 @@ const router = createBrowserRouter(
         <Route path="/product" element={<Product />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/create" element={<BlogCreate />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Route>
     </>
   )
