@@ -1,7 +1,7 @@
 import { gql } from "graphql-request";
 import { useEffect, useState } from "react";
 import { graphqlClientHome } from "./index.Base";
-import { CompanyState, JobResponse, JobState } from "./index.type";
+import { JobResponse, JobState } from "./index.type";
 
 const useFetchGetJobs = () => {
   const [jobs, setJobs] = useState<JobState[]>([]);

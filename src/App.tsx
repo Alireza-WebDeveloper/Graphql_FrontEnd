@@ -17,7 +17,7 @@ import Product from "./Page/product";
 import Blog from "./Page/blog";
 import BlogCreate from "./Page/blog/create";
 import Dashboard from "./Page/dashboard/index";
-
+import News from "./Page/news/index";
 // !! Middleware
 
 // !! Route
@@ -33,7 +33,8 @@ const router = createBrowserRouter(
         <Route path="/product" element={<Product />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/create" element={<BlogCreate />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />{" "}
+        <Route path="/news" element={<News />} />
       </Route>
     </>
   )

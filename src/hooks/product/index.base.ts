@@ -1,4 +1,8 @@
-import { GraphQLClient } from "graphql-request";
-const graphqlClientProduct = new GraphQLClient("http://localhost:8000/graphql");
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-export { graphqlClientProduct };
+const apolloClient = new ApolloClient({
+  uri: "http://localhost:8000/graphql",
+  cache: new InMemoryCache({}),
+});
+
+export { apolloClient };

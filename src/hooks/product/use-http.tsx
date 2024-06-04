@@ -1,43 +1,44 @@
 import { useEffect, useState } from "react";
 import { ProductState } from "./index.type";
-import { graphqlClientProduct } from "./index.base";
-import { gql } from "graphql-request";
+import { apolloClient } from "./index.base";
+import { gql } from "@apollo/client";
 
-const useFetchProducts = (): {
-  loading: boolean;
-  error: string | null;
-  products: ProductState[];
-} => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-  const [products, setProducts] = useState<ProductState[]>([]);
-
-  const fetchProducts = async () => {
-    setLoading(true);
+const useFetchProducts = () => {
+  const [product, setProduct] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const query = gql`
+    query ProductQuery {
+      product {
+        id
+        name
+        price
+      }
+    }
+  `;
+  const fetchData = async () => {
     try {
-      const { product } = await graphqlClientProduct.request<any>(gql`
-        query ProductQuery {
-          product {
-            id
-            name
-            price
-          }
-        }
-      `);
-
-      setProducts(product);
-    } catch (err: any) {
-      setError(err.message || "An error occurred while fetching products.");
+      setLoading(true);
+      const { data } = await apolloClient.query<any>({
+        query,
+        variables: {
+          id: "1",
+        },
+      });
+      setProduct(data.product);
+      setError("");
+    } catch (error) {
+      setError(error?.message);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchProducts();
+    fetchData();
   }, []);
 
-  return { loading, error, products };
+  return { product, error, loading };
 };
 
 export default useFetchProducts;
