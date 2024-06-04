@@ -6,6 +6,14 @@ import ButtonContainer from "../../Components/Common/Main/button-container";
 const client = new ApolloClient({
   uri: "https://countries.trevorblades.com/",
   cache: new InMemoryCache(),
+  defaultOptions: {
+    query: {
+      fetchPolicy: "network-only",
+    },
+    watchQuery: {
+      fetchPolicy: "network-only",
+    },
+  },
 });
 
 const CountryList = () => {
