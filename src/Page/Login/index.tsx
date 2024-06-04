@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FormState } from "../../Components/login/index.type";
 import Form from "../../Components/login/form";
+import { useAuth } from "../../Components/Common/Config/Auth/Authentication";
 
 const Page = () => {
   const [form, setForm] = useState<FormState>({
@@ -8,13 +9,18 @@ const Page = () => {
     password: "",
   });
 
+  const { login } = useAuth();
+
   const handleUpdateForm = (key: keyof FormState, value: string): void => {
     setForm({ ...form, [key]: value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(form);
+
+    const { email, password } = form;
+
+    login({ email, password });
   };
 
   return (

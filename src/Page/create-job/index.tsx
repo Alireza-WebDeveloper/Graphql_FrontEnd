@@ -21,7 +21,6 @@ const Page = () => {
     const { title, description } = form;
     mutate(title, description);
   };
-  console.log(data.createJob);
 
   return (
     <div className="text-center">

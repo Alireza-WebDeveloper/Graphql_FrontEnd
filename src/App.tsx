@@ -19,20 +19,12 @@ import BlogCreate from "./Page/blog/create";
 import Dashboard from "./Page/dashboard/index";
 
 // !! Middleware
-import Middleware from "./Components/Common/Config/middleware";
 
 // !! Route
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route
-        path="/"
-        element={
-          <Middleware>
-            <Layout />
-          </Middleware>
-        }
-      >
+      <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/companies/:id" element={<Comapny />} />
