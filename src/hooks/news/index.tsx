@@ -1,4 +1,4 @@
-import { useQuery, gql, FragmentMatcher } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 
 interface Country {
   code: string;

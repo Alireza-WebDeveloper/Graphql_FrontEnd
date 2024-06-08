@@ -41,7 +41,7 @@ const CountryList = () => {
           data.countries.map((country) => (
             <li
               key={country.code}
-              className="mb-2 border-2 rounded bg-slate-50 dark:bg-gray-800 p-3 flex items-center justify-center gap-1"
+              className="mb-2 border-2 rounded   p-3 flex items-center justify-center gap-1"
             >
               <span className="font-bold">{country.name}</span> -{" "}
               <span>{country.emoji}</span>
@@ -55,7 +55,7 @@ const CountryList = () => {
 const Page = () => {
   return (
     <ApolloProvider client={client}>
-      <div className="bg-gray-100 dark:bg-gray-900 min-h-screen py-8">
+      <div className=" min-h-screen py-8">
         <CountryList />
       </div>
     </ApolloProvider>

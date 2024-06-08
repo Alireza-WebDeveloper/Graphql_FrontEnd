@@ -6,7 +6,7 @@ import React, { ButtonHTMLAttributes } from "react";
 // !! Define the interface for the component props
 interface ButtonContainerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  color?: "blue" | "red";
+  color?: "blue" | "red" | "green";
   fontSize?: "small" | "large";
 }
 
@@ -23,6 +23,7 @@ const ButtonContainer: React.FC<ButtonContainerProps> = ({
     colors: {
       blue: "bg-blue-500 hover:bg-blue-700",
       red: "bg-red-500 hover:bg-red-700",
+      green: "bg-green-500 hover:bg-red-700",
     },
     fontSizes: {
       small: "text-sm",
@@ -33,7 +34,11 @@ const ButtonContainer: React.FC<ButtonContainerProps> = ({
 
   // Select color classes based on the color prop
   const colorClasses =
-    color === "blue" ? classes.colors.blue : classes.colors.red;
+    color === "blue"
+      ? classes.colors.blue
+      : color === "green"
+      ? classes.colors.green
+      : classes.colors.red;
 
   // Select font size classes based on the fontSize prop
   const fontSizeClasses =

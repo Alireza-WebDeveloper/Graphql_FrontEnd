@@ -19,11 +19,14 @@ const Layout = () => {
               <CustomLink to="/login">login</CustomLink>{" "}
               <CustomLink to="/product">product</CustomLink>{" "}
               <CustomLink to="/blog">blog</CustomLink>
-              <CustomLink to="/news">news</CustomLink>
+              <CustomLink to="/news">news</CustomLink>{" "}
+              <CustomLink to="/account">account</CustomLink>
             </div>
             <ToggleTheme />
           </Header>
-          <main className="mt-3 mx-auto container p-2">{<Outlet />}</main>
+          <main className="  p-2 bg-gray-200 bg-primary-100 text-primary-800  min-h-[100vh] ">
+            {<Outlet />}
+          </main>
           <Footer>
             <p>
               Follow us on social media for the latest updates and promotions.
