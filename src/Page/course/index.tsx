@@ -9,9 +9,10 @@ interface Course {
 
 const Page: React.FC = () => {
   const [page, setPage] = useState(1);
+  const limit = 10;
   const { data, loading, error } = useGetCourse({
     page: String(page),
-    limit: "10",
+    limit: String(limit),
   });
 
   if (loading) return <div>loading...</div>;
@@ -20,7 +21,7 @@ const Page: React.FC = () => {
   return (
     <>
       <div className="grid grid-cols-3 gap-4">
-        {data?.getCourse.map((item: Course, index: number) => (
+        {data?.getCourse.data.course.map((item: Course, index: number) => (
           <div key={index} className="p-4 rounded bg-primary-800">
             <h1 className="text-lg font-bold text-secondary-100">
               {item.name}
@@ -29,7 +30,7 @@ const Page: React.FC = () => {
           </div>
         ))}
       </div>
-      {data?.getCourse && data.getCourse.length > 1 && (
+      {data?.getCourse && data.getCourse.data.course.length > 1 && (
         <div className="flex justify-center gap-5 mt-4 items-center">
           {page > 1 && (
             <ButtonContainer onClick={() => setPage(page - 1)}>
@@ -37,7 +38,7 @@ const Page: React.FC = () => {
             </ButtonContainer>
           )}
           <div>{page}</div>
-          {page * 10 < 20 && (
+          {page * limit < data.getCourse.count && (
             <ButtonContainer onClick={() => setPage(page + 1)}>
               Next
             </ButtonContainer>

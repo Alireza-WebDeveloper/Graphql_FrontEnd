@@ -1,19 +1,26 @@
 import { gql, useQuery } from "@apollo/client";
-import { GetCourseParameter, CourseState } from "./index.type";
+import { GetCourseParameter, GetCourseResponse } from "./index.type";
 
 // Define the query for reusability
 const getCourseQuery = gql`
   query getCourse($page: String, $limit: String) {
     getCourse(page: $page, limit: $limit) {
-      name
-      description
+      status
+      message
+      count
+      data {
+        course {
+          description
+          name
+        }
+      }
     }
   }
 `;
 
 const useGetCourse = ({ page, limit }: GetCourseParameter) => {
   const { data, loading, error } = useQuery<{
-    getCourse: CourseState[];
+    getCourse: GetCourseResponse;
   }>(getCourseQuery, {
     variables: { page, limit },
   });
