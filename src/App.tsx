@@ -19,6 +19,7 @@ import BlogCreate from "./Page/blog/create";
 import Dashboard from "./Page/dashboard/index";
 import News from "./Page/news/index";
 import Account from "./Page/account/";
+import Course from "./Page/course";
 // !! Middleware
 
 // !! Route
@@ -36,7 +37,8 @@ const router = createBrowserRouter(
         <Route path="/blog/create" element={<BlogCreate />} />
         <Route path="/dashboard" element={<Dashboard />} />{" "}
         <Route path="/news" element={<News />} />{" "}
-        <Route path="/account" element={<Account />} />
+        <Route path="/account" element={<Account />} />{" "}
+        <Route path="/course" element={<Course />} />
       </Route>
     </>
   )
